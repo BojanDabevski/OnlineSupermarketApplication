@@ -35,4 +35,10 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="nlog-AspNetCore3-all-2021-09-14.log">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
