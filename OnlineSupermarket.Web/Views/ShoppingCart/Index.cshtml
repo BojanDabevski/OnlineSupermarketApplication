@@ -1,0 +1,67 @@
+﻿@using Microsoft.Extensions.Options
+@inject IOptions<OnlineSupermarket.Domain.StripeSettings> Stripe
+@model OnlineSupermarket.Domain.DTO.ShoppingCartDto
+<div class="container">
+    <div class="row m-5 ">
+        @*<a  asp-controller="ShoppingCart" asp-action="OrderNow" class="btn btn-success">Order Now</a>*@
+        @if (Model.TotalPrice != 0)
+        {
+            <form asp-controller="ShoppingCart" asp-action="PayOrder" method="post">
+                <article>
+                    <script src="https://checkout.stripe.com/checkout.js"
+                            class="stripe-button"
+                            data-key="@Stripe.Value.PublishableKey"
+                            data-locale="auto"
+                            data-description="OnlineSupermarketApplication Payment"
+                            data-amount="@(Model.TotalPrice*100)"
+                            data-label="Pay $@Model.TotalPrice">
+                    </script>
+                </article>
+            </form>
+        }
+    </div>
+    <div class="m-5">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ProductName</th>
+                    <th scope="col">ProductPrice</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.ProductInCart.Count; i++)
+                {
+                    var item = Model.ProductInCart[i];
+
+                    <tr>
+                        <th scope="row">@(i+1)</th>
+                        <td>@item.Product.ProductName</td>
+                        <td>@item.Product.ProductPrice</td>
+                        <td>@item.Quantity</td>
+                        <td>@(item.Product.ProductPrice*item.Quantity)</td>
+                        <td> <a asp-route-id="@item.Product.Id" asp-controller="ShoppingCart" asp-action="DeleteFromShoppingCart" class="btn btn-danger">Delete</a></td>
+
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th scope="col">TotalPrice</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">@Model.TotalPrice MKD </th>
+                </tr>
+
+            </tfoot>
+        </table>
+        <small>P.s. After Ordering and Paying to get the email confirmation restart the application and you shall receive the email :D</small>
+    </div>
+
+</div>

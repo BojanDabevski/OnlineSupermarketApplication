@@ -1,0 +1,314 @@
+﻿@model List<OnlineSupermarket.Domain.DomainModels.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="m-5">
+
+    <div class="m-4">
+        @if (User.IsInRole("Admin"))
+        {
+            <table>
+                <tr>If you want to Export a certain Category, write the Category and press Enter  </tr>
+                <tr>
+                    <form asp-action="ExportCertainCategory" method="get">
+                        <input type="text" name="valueINeed" />
+
+                    </form>
+                </tr>
+            </table>
+            <small> Available Categories: MilkProduct, Beverage, Fruit, Vegetable, BakedGoods, Meat, Sweats</small>
+
+        }
+        @if (User.IsInRole("User"))
+        {
+            <table>
+                <tr>If you want to Export a certain Category, write the Category and press Enter  </tr>
+                <tr>
+                    <form class="disabled "asp-action="ExportCertainCategory" method="get">
+                        <input type="text" name="valueINeed" />
+
+                    </form>
+                </tr>
+            </table>
+            <small class="disabled "> Available Categories: MilkProduct, Beverage, Fruit, Vegetable, BakedGoods, Meat, Sweats</small>
+            
+
+        }
+
+
+
+    </div>
+    <table class="table">
+
+        <thead class="thead-dark">
+            <tr>
+
+                <th scope="col">Show products of certain category </th>
+                <th scope="col">Price</th>
+                <th scope="col">Category : MilkProduct</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                string kategorija = "MilkProduct";
+                @if (kategorija == item.Category.ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                        </td>
+                    </tr>
+
+                }
+
+
+            }
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+
+                <th scope="col">Show products of certain category </th>
+                <th scope="col">Price</th>
+                <th scope="col">Category : Beverage</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                string kategorija = "Beverage";
+                @if (kategorija == item.Category.ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                        </td>
+                    </tr>
+
+                }
+
+
+            }
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+
+                <th scope="col">Show products of certain category </th>
+                <th scope="col">Price </th>
+                <th scope="col">Category : Fruit</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                string kategorija = "Fruit";
+                @if (kategorija == item.Category.ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                        </td>
+                    </tr>
+
+                }
+
+
+            }
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+
+                <th scope="col">Show products of certain category </th>
+                <th scope="col">Price</th>
+                <th scope="col">Category : Vegetable</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                string kategorija = "Vegetable";
+                @if (kategorija == item.Category.ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                        </td>
+                    </tr>
+
+                }
+
+
+            }
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+
+                <th scope="col">Show products of certain category </th>
+                <th scope="col">Price</th>
+                <th scope="col">Category : BakedGoods</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                string kategorija = "BakedGoods";
+                @if (kategorija == item.Category.ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                        </td>
+                    </tr>
+
+                }
+
+
+            }
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+
+                <th scope="col">Show products of certain category </th>
+                <th scope="col">Price</th>
+                <th scope="col">Category : Meat</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                string kategorija = "Meat";
+                @if (kategorija == item.Category.ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                        </td>
+                    </tr>
+
+                }
+
+
+            }
+        </tbody>
+        <thead class="thead-dark">
+            <tr>
+
+                <th scope="col">Show products of certain category </th>
+                <th scope="col">Price</th>
+                <th scope="col">Category : Sweats</th>
+                <th scope="col"></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                var item = Model[i];
+                string kategorija = "Sweats";
+                @if (kategorija == item.Category.ToString())
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                        </td>
+                    </tr>
+
+                }
+
+
+            }
+        </tbody>
+
+
+    </table>
+    <div class="m-3">
+        <p> If you want to go back to see all the products click on the "All Products" button</p>
+        <a class="btn btn-secondary" asp-area="" asp-controller="Products" asp-action="Index">All Products</a>
+
+    </div>
+
+</div>
+

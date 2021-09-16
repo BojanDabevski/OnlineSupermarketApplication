@@ -1,0 +1,29 @@
+﻿@model OnlineSupermarket.Domain.DTO.AddToShoppingCardDTO
+
+@{
+    ViewData["Title"] = "Add To Shopping Card";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Selected Product to User Shopping Card:</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4 m-auto">
+        <form asp-action="AddProductToCard" method="post">
+            <input type="hidden" asp-for="ProductId" />
+            <div class="form-group">
+                <label asp-for="SelectedProduct.ProductName"></label>
+                <input disabled asp-for="SelectedProduct.ProductName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Quantity"></label>
+                <input asp-for="Quantity" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>

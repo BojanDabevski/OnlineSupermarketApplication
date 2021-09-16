@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<OnlineSupermarket.Domain.DomainModels.Order>
+<div class="container">
+    <div class="row">
+        @if (User.IsInRole("Admin"))
+        {
+            <a class="btn btn-outline-success" asp-controller="Order" asp-action="ExportAllOrders">Export Orders</a>
+
+        }
+        @if (User.IsInRole("User"))
+        {
+
+            @*<a class="btn btn-outline-success disabled" asp-controller="Order" asp-action="ExportAllOrders">Export Orders</a>*@
+
+        }
+
+    </div>
+
+    <div class="m-5">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Customer Details</th>
+                    <th scope="col">Number of Products</th>
+                    <th scope="col">Order Details</th>
+                    <th scope="col">Invoice Creation</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    var item = Model[i];
+
+                    <tr>
+                        <th scope="row">@(i+1)</th>
+                        <td>@item.User</td>
+                        <td>@item.Products.Count</td>
+                        <td> <a asp-route-orderId="@item.Id" asp-action="Details" class="btn btn-info">View Order</a></td>
+                        <td><a asp-route-orderId="@item.Id" asp-action="CreateInvoice" class="btn btn-info">Create Invoice</a></td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+</div>

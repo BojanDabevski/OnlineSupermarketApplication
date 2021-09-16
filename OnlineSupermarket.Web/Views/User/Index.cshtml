@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@if (User.IsInRole("Admin"))
+{
+<form asp-controller="User" asp-action="ImportUsers" method="post" enctype="multipart/form-data">
+    <div class="form-group w-25">
+        <input type="file" name="file" class="form-control" />
+    </div>
+    <hr />
+    <button type="submit" class="btn btn-outline-success">Import Excel</button>
+</form>
+}
+@if (User.IsInRole("User"))
+{
+   <p>You do not have access to this function</p>
+
+}

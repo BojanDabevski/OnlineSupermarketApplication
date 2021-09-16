@@ -1,0 +1,120 @@
+﻿@model List<OnlineSupermarket.Domain.DomainModels.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    {
+        background-color: red;
+       
+    }
+</style>
+<div class="container">
+    <div class="m-3 text-center">
+
+        <a class="btn btn-secondary " asp-area="" asp-controller="Products" asp-action="ProductByCategory">ProductByCategory</a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a class="btn btn-outline-dark" asp-controller="Products" asp-action="ExportAllTickets">Export Products</a>
+            <a class="btn btn-success " asp-controller="Products" asp-action="Create">Add new Product</a>
+        }
+        @if (User.IsInRole("User"))
+        {
+            <a class="btn btn-dark disabled " asp-controller="Products" asp-action="ExportAllTickets">Export Products</a>
+            <a class="btn btn-success disabled " asp-controller="Products" asp-action="Create">Add new Product</a>
+
+        }
+
+
+
+    </div>
+    
+    
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        var item = Model[i];
+
+        if (i % 3 == 0)
+        {
+            @:<div class="row">
+            }
+            <div class="col-md-3 m-4">
+                <div class="card" style="width: 18rem; height: 30rem;">
+                    <img class="card-img-top" src="@item.ProductImage" style="height: 50%" alt="Image for product!" />
+
+                    <div class="card-body">
+                        <h3 class="card-title">@item.ProductName</h3>
+                        <p class="card-text">Category: @item.Category</p>
+
+                        <h6>Price: @item.ProductPrice MKD</h6>
+                        <h7>ExpirationDate: @item.ExpirationDate</h7>
+
+
+                    </div>
+
+                    <div class="card-footer">
+
+                        <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                        <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+                        <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+            if (i % 3 == 2)
+            {
+            @:</div>
+        }
+    }
+</div>
+<div class="m-5">
+    <table class="table">
+
+        <thead class="thead-dark">
+            <tr>
+
+                <th scope="col">Ordered By  Expiration Date in ascending order </th>
+                <th scope="col">Date : @DateTime.Now.ToString("yyyy-MM-dd")</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderBy(item => item.ExpirationDate))
+            {
+
+                <!--
+                     string date = DateTime().UtcNow.ToString("yyyy-MM-dd");
+
+
+                if (item.Date > date)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ExpirationDate)
+                        </td>
+
+
+                    </tr>
+                }
+                -->
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpirationDate)
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+
+</div>
