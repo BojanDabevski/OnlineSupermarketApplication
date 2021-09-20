@@ -9,67 +9,72 @@
         <a class="btn btn-outline-success m-0" asp-controller="Role" asp-action="CreateRole">Create a new Role</a>
     </div>
 
-
-    <div>
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">User</th>
-                    <th scope="col" class="text-center">Role Management</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @if (Model.Count.Equals(0))
-                {
+  
+        <div>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
                     <tr>
-                        <td colspan="6" style="font-weight: bold; text-transform: uppercase; text-align: center;">No Users in Database</td>
+                        <th scope="col">User</th>
+                        <th scope="col" class="text-center">Role Management</th>
                     </tr>
-                }
+                </thead>
+                <tbody>
 
-
-                @{
-                    int userRows = 0;
-                }
-
-                @for (int i = 0; i < Model.Count; i++)
-                {
-                    var user = Model[i];
-
-                    @if (user.Email.Equals(User.Identity.Name))
+                    @if (Model.Count.Equals(0))
                     {
-                        continue;
+                        <tr>
+                            <td colspan="6" style="font-weight: bold; text-transform: uppercase; text-align: center;">No Users in Database</td>
+                        </tr>
                     }
-                    <tr>
 
-                        <td>@user.Email</td>
-                        <td colspan="5" class="text-center">
-                            @if (user.Role.Equals("User"))
+
+                    @{
+                        int userRows = 0;
+                    }
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        var user = Model[i];
+                        @*@if (user.Role.Equals("Admin"))
+                        {*@
+
+                            @if (user.Email.Equals(User.Identity.Name))
                             {
-                                <a class="btn btn-outline-success" asp-route-id="@user.Id" asp-action="GrantAdmin">Grant Admin Privileges</a>
-                                <a class="btn btn-outline-danger disabled" asp-route-id="@user.Id" asp-action="RemoveAdmin">Remove Admin Privileges</a>
+                                continue;
                             }
-                            else
-                            {
-                                <a class="btn btn-outline-success disabled" asp-route-id="@user.Id" asp-action="GrantAdmin">Grant Admin Privileges</a>
-                                <a class="btn btn-outline-danger" asp-route-id="@user.Id" asp-action="RemoveAdmin">Remove Admin Privileges</a>
-                            }
-                        </td>
-                    </tr>
+                            <tr>
 
-                    userRows++;
+                                <td>@user.Email</td>
+                                <td colspan="5" class="text-center">
+                                    @if (user.Role.Equals("User"))
+                                    {
+                                        <a class="btn btn-outline-success" asp-route-id="@user.Id" asp-action="GrantAdmin">Grant Admin Privileges</a>
+                                        <a class="btn btn-outline-danger disabled" asp-route-id="@user.Id" asp-action="RemoveAdmin">Remove Admin Privileges</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-outline-success disabled" asp-route-id="@user.Id" asp-action="GrantAdmin">Grant Admin Privileges</a>
+                                        <a class="btn btn-outline-danger" asp-route-id="@user.Id" asp-action="RemoveAdmin">Remove Admin Privileges</a>
+                                    }
+                                </td>
+                            </tr>
 
-                }
-
-                @if (userRows.Equals(0))
-                {
-                    <tr>
-                        <td colspan="6" style="font-weight: bold; text-transform: uppercase; text-align: center;">No Other Users in Database</td>
-                    </tr>
-                }
+                                userRows++;
+                            @*}
+                            else { }*@
 
 
-            </tbody>
-        </table>
-    </div>
+                        }
+
+                        @if (userRows.Equals(0))
+                        {
+                            <tr>
+                                <td colspan="6" style="font-weight: bold; text-transform: uppercase; text-align: center;">No Other Users in Database</td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+            </table>
+        </div>
 </div>

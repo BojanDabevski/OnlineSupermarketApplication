@@ -54,10 +54,24 @@
                     </div>
 
                     <div class="card-footer">
+                        @if (User.IsInRole("Admin"))
+                        {
 
-                        <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
+                            <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        }
+                        @if (User.IsInRole("User"))
+                        {
+                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary disabled">Edit</a>
+                            <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger disabled">Delete</a>
+                            
+
+                        }
+                        @*<a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
                         <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
-                        <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>*@
 
                     </div>
                 </div>

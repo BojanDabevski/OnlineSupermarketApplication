@@ -19,34 +19,37 @@
         }
 
     </div>
-
-    <div class="m-5">
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Customer Details</th>
-                    <th scope="col">Number of Products</th>
-                    <th scope="col">Order Details</th>
-                    <th scope="col">Invoice Creation</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < Model.Count; i++)
-                {
-                    var item = Model[i];
-
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="m-5">
+            <table class="table">
+                <thead class="thead-dark">
                     <tr>
-                        <th scope="row">@(i+1)</th>
-                        <td>@item.User</td>
-                        <td>@item.Products.Count</td>
-                        <td> <a asp-route-orderId="@item.Id" asp-action="Details" class="btn btn-info">View Order</a></td>
-                        <td><a asp-route-orderId="@item.Id" asp-action="CreateInvoice" class="btn btn-info">Create Invoice</a></td>
+                        <th scope="col">#</th>
+                        <th scope="col">Customer Details</th>
+                        <th scope="col">Number of Products</th>
+                        <th scope="col">Order Details</th>
+                        <th scope="col">Invoice Creation</th>
                     </tr>
-                }
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        var item = Model[i];
 
-            </tbody>
+                        <tr>
+                            <th scope="row">@(i + 1)</th>
+                            <td>@item.User</td>
+                            <td>@item.Products.Count</td>
+                            <td> <a asp-route-orderId="@item.Id" asp-action="Details" class="btn btn-info">View Order</a></td>
+                            <td><a asp-route-orderId="@item.Id" asp-action="CreateInvoice" class="btn btn-info">Create Invoice</a></td>
+                        </tr>
+                    }
 
-        </table>
+                </tbody>
+
+            </table>
+        </div>
+    }
+            else { }
     </div>
-</div>
