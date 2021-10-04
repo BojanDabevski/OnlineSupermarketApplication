@@ -70,8 +70,12 @@
                             @Html.DisplayFor(modelItem => item.Category)
                         </td>
                         <td>
-                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
-                        </td>
+                            @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                            {
+                                <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            }
+                            else { }
+                            </td>
                     </tr>
 
                 }
@@ -107,7 +111,11 @@
                             @Html.DisplayFor(modelItem => item.Category)
                         </td>
                         <td>
-                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                            {
+                                <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            }
+                            else { }
                         </td>
                     </tr>
 
@@ -144,7 +152,11 @@
                             @Html.DisplayFor(modelItem => item.Category)
                         </td>
                         <td>
-                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                            {
+                                <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            }
+                            else { }
                         </td>
                     </tr>
 
@@ -181,7 +193,11 @@
                             @Html.DisplayFor(modelItem => item.Category)
                         </td>
                         <td>
-                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                            {
+                                <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            }
+                            else { }
                         </td>
                     </tr>
 
@@ -218,7 +234,11 @@
                             @Html.DisplayFor(modelItem => item.Category)
                         </td>
                         <td>
-                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                            {
+                                <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            }
+                            else { }
                         </td>
                     </tr>
 
@@ -255,7 +275,11 @@
                             @Html.DisplayFor(modelItem => item.Category)
                         </td>
                         <td>
-                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                            {
+                                <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            }
+                            else { }
                         </td>
                     </tr>
 
@@ -292,7 +316,11 @@
                             @Html.DisplayFor(modelItem => item.Category)
                         </td>
                         <td>
-                            <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            @if (User.IsInRole("Admin") || User.IsInRole("User"))
+                            {
+                                <a asp-controller="Products" asp-action="AddProductToCard" asp-route-id="@item.Id" class="btn btn-info">Add to Card</a>
+                            }
+                            else { }
                         </td>
                     </tr>
 
