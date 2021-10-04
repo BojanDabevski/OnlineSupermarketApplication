@@ -1,7 +1,8 @@
 # OnlineSupermarketApplication
 Project assignment for the curriculum Integrated Systems to make a MVC Onion Architecture web application to sell products online as a online supermarket - Bojan Dabevski 181115
 
-#Integrated characteristics: 
+##Integrated characteristics: 
+
 -The application is based an built on a Onion Architecture 
 -User registration with the ability to choose a role(Admin and User). Also the ability to give admin priveleges to normal users and takeaway admin priveleges
 -All CRUD operations 
