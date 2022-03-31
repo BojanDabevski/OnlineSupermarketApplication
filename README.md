@@ -1,5 +1,5 @@
 # OnlineSupermarketApplication
-Project assignment for the curriculum Integrated Systems to make a MVC Onion Architecture web application to sell products online as a online supermarket - Bojan Dabevski 181115
+Project assignment for the curriculum Integrated Systems to make a C# ASP.NET Core MVC Onion Architecture web application to sell products online as a online supermarket - Bojan Dabevski 181115
 
 # Integrated characteristics: 
 
